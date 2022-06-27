@@ -1,0 +1,176 @@
+import React from 'react'
+import {
+  Box,
+  Center,
+  useColorModeValue,
+  Stack,
+  Image,
+  Tooltip,
+  Badge,
+  Flex,
+  IconButton,
+  Link,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure, 
+  Button,
+  
+  
+
+} from '@chakra-ui/react';
+import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { FiShoppingCart } from 'react-icons/fi';
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
+
+const data = {
+  isNew: true,
+  name: 'Wayfarer Classic',
+  price: 4.5,
+  rating: 2.3,
+  numReviews: 34,
+};
+
+
+  
+
+function Rating({ rating, numReviews }) {
+  return (
+    <Box display='flex' mt='2' mr={5} alignItems='center'>
+      {Array(5)
+        .fill('')
+        .map((_, i) => {
+          const roundedRating = Math.round(rating * 2) / 2;
+          if (roundedRating - i >= 1) {
+            return (
+              <BsStarFill
+                key={i}
+                style={{ marginLeft: '1' }}
+                color={i < rating ? 'teal.500' : 'gray.300'}
+              />
+            );
+          }
+          if (roundedRating - i === 0.5) {
+            return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
+          }
+          return <BsStar key={i} style={{ marginLeft: '1' }} />;
+        })}
+      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+        {numReviews} review{numReviews > 1 && 's'}
+      </Box>
+    </Box>
+  );
+}
+
+export default function Item({id, Modelo, Marca, precio, imgURL, Descripcion, onAdd }) {
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  return (
+
+        <Center py={10}>
+          <Box
+            role={'group'}
+            py={10}
+            maxW={'330px'}
+            w={'full'}
+            bg={useColorModeValue('yellow.300', 'gray.800')}
+            boxShadow={'2xl'}
+            rounded={'lg'}
+            pos={'relative'}
+            zIndex={0}>
+            <Box
+              rounded={'lg'}
+              mt={-12}
+              pos={'relative'}
+              height={'230px'}
+              _after={{
+                transition: 'all .3s ease',
+                content: '""',
+                w: 'full',
+                h: 'full',
+                pos: 'absolute',
+                top: 5,
+                left: 0,
+                backgroundImage: `url(${imgURL})`,
+                filter: 'blur(15px)',
+                zIndex: -1,
+              }}
+              _groupHover={{
+                _after: {
+                  filter: 'blur(20px)',
+                },
+              }}>
+              <Image
+                m={'auto'}
+                rounded={'lg'}
+                height={250}
+                width={300}
+                objectFit={'cover'}
+                src={imgURL}
+              />
+            </Box>
+            <Stack pt={10} align={'center'}>
+            <Box p="6">
+              <Box d="flex" alignItems="baseline">
+                {data.isNew && (
+                <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+                  New
+                </Badge>
+                )}
+              </Box>
+              <Flex mt="1" justifyContent="space-between" alignContent="center">
+                <Box
+                fontSize="2xl"
+                fontWeight="semibold"
+                as="h4"
+                lineHeight="tight">
+                  <Link color={'blue.500'} fontSize={'xl'} textTransform={'uppercase'} onClick={onOpen}>{Modelo}</Link>
+                  <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>{Marca}</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <ItemDetailContainer Modelo={Modelo} id={id} precio={precio} imgURL={imgURL} Descripcion={Descripcion} Marca={Marca}/>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                          Cerrar
+                        </Button>
+                        <IconButton onClick={onAdd} colorScheme='dark' variant='outline' size='lg' ml={5} icon={<FiShoppingCart/>}/>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Box>
+                <Tooltip
+                label="Añadir al carrito"
+                bg={useColorModeValue('gray.800', 'white')}
+                placement={'top'}
+                color={useColorModeValue('white', 'gray.800')}
+                fontSize={'1.2em'}>
+                  <IconButton onClick={onAdd} colorScheme='dark' variant='outline' size='lg' ml={5} icon={<FiShoppingCart/>}/>
+                </Tooltip>
+              </Flex>
+
+              <Flex justifyContent="space-between" alignContent="center">
+                <Rating rating={data.rating} numReviews={data.numReviews} />
+                <Box mt={2} fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
+                  <Box as="span" color={'gray.600'} fontSize="lg">
+                    $
+                  </Box>
+                  {precio}
+                </Box>
+              </Flex>
+            </Box>
+          </Stack>
+          </Box>
+        </Center>
+      );
+    }
+  
+
