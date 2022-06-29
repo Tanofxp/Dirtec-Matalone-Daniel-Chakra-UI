@@ -67,7 +67,7 @@ export default function NavBar() {
         
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
         <Stack direction={'row'}  align={'center'}>
-          <a href='../public/index.html'><Image src = {logo} h={{base: '30px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/></a>
+          <a href='/'><Image src = {logo} h={{base: '30px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/></a>
         </Stack>
 
 
@@ -280,18 +280,17 @@ const NAV_ITEMS= [
     children: [
       {
         label: 'Lenovo',
-        href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        href: '/',
       },
       {
         label: 'HP',
         href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
       },
       {
         label: 'Asus',
         href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
       },
     ],
   },
@@ -301,17 +300,17 @@ const NAV_ITEMS= [
       {
         label: 'Notebooks',
         href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
       },
       {
         label: 'Tablets',
         href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
       },
       {
         label: 'Smartphones',
         href: '#',
-        clickeado:()=> alert("me hiciste click"),
+        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
       },
     ],
   },
