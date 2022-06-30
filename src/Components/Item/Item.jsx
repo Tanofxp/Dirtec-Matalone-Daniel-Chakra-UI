@@ -19,13 +19,10 @@ import {
   ModalCloseButton,
   useDisclosure, 
   Button,
-  
-  
-
+  Text,
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 
 const data = {
   isNew: true,
@@ -66,7 +63,7 @@ function Rating({ rating, numReviews }) {
   );
 }
 
-export default function Item({id, Modelo, Marca, precio, imgURL, Descripcion, onAdd }) {
+export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descripcion}) {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
@@ -133,12 +130,29 @@ export default function Item({id, Modelo, Marca, precio, imgURL, Descripcion, on
                     <ModalOverlay />
                     <ModalContent>
                       <ModalHeader>{Marca}</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <ItemDetailContainer Modelo={Modelo} id={id} precio={precio} imgURL={imgURL} Descripcion={Descripcion} Marca={Marca}/>
-                      </ModalBody>
-
-                      <ModalFooter>
+                        <ModalCloseButton />
+                          <ModalBody>
+                          <Box>
+                              <Text fontWeight='bold' mb='1rem'>
+                                  Modelo: {Modelo}
+                                  <br></br>
+                                  ID del producto: {id}
+                                  <Image
+                                  m={'auto'}
+                                  rounded={'lg'}
+                                  height={150}
+                                  width={200}
+                                  objectFit={'cover'}
+                                  src={imgURL}
+                                  />
+                                  Precio: ${precio}
+                              </Text>
+                              <Text>
+                                Descripcion: {Descripcion}
+                              </Text>
+                          </Box>
+                          </ModalBody>
+                        <ModalFooter>
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                           Cerrar
                         </Button>
