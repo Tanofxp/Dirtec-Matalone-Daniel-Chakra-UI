@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Box, Button, ButtonGroup, IconButton, Text, useColorModeValue} from '@chakra-ui/react'
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { Link } from "react-router-dom";
 
 const ItemCount = ({Stock, initial, onAdd}) => {
 
@@ -47,7 +48,10 @@ const ItemCount = ({Stock, initial, onAdd}) => {
         <Box align='center'>
         <Text size='sm' mt={2}>Stock: {Stock} </Text>
         
-        <Button mt={3} mb={2} width='160px' onClick={onAdd} colorScheme='blue'>Agregar al Carrito</Button>
+        <Button mt={3} mb={2} width='160px' onClick={()=>onAdd(auxStock)} colorScheme='blue'>Agregar al Carrito</Button>
+        <Button as={Link} to="/cart" mt={3} mb={2} ml={2} width="160px" colorScheme="green">
+					Finalizar compra
+				</Button>
         </Box>
         </>
     )

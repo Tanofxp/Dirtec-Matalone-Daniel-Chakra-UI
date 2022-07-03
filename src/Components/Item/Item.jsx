@@ -9,20 +9,11 @@ import {
   Badge,
   Flex,
   IconButton,
-  Link,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure, 
-  Button,
   Text,
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
+import { Link as RouterLink } from 'react-router-dom';
 
 const data = {
   isNew: true,
@@ -65,11 +56,13 @@ function Rating({ rating, numReviews }) {
 
 export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descripcion}) {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  
   return (
 
         <Center py={10}>
           <Box
+            as={RouterLink} 
+            to={"/item/" + id}
             role={'group'}
             py={10}
             maxW={'330px'}
@@ -125,41 +118,7 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight">
-                  <Link color={'blue.500'} fontSize={'xl'} textTransform={'uppercase'} onClick={onOpen}>{Modelo}</Link>
-                  <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>{Marca}</ModalHeader>
-                        <ModalCloseButton />
-                          <ModalBody>
-                          <Box>
-                              <Text fontWeight='bold' mb='1rem'>
-                                  Modelo: {Modelo}
-                                  <br></br>
-                                  ID del producto: {id}
-                                  <Image
-                                  m={'auto'}
-                                  rounded={'lg'}
-                                  height={150}
-                                  width={200}
-                                  objectFit={'cover'}
-                                  src={imgURL}
-                                  />
-                                  Precio: ${precio}
-                              </Text>
-                              <Text>
-                                Descripcion: {Descripcion}
-                              </Text>
-                          </Box>
-                          </ModalBody>
-                        <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
-                          Cerrar
-                        </Button>
-                        <IconButton onClick={onAdd} colorScheme='dark' variant='outline' size='lg' ml={5} icon={<FiShoppingCart/>}/>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
+                  <Text color={'blue.500'} fontSize={'xl'} textTransform={'uppercase'}>{Modelo}</Text>
                 </Box>
                 <Tooltip
                 label="Añadir al carrito"
@@ -170,7 +129,6 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
                   <IconButton onClick={onAdd} colorScheme='dark' variant='outline' size='lg' ml={5} icon={<FiShoppingCart/>}/>
                 </Tooltip>
               </Flex>
-
               <Flex justifyContent="space-between" alignContent="center">
                 <Rating rating={data.rating} numReviews={data.numReviews} />
                 <Box mt={2} fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>

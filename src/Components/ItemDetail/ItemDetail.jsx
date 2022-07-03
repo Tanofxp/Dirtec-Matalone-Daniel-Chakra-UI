@@ -2,11 +2,13 @@ import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
 import { Box, Text, Image } from '@chakra-ui/react'
 
+    function onAdd(added){
+        alert("Agregaste "+ added +" productos al carrito")
+    }
+
 export default function ItemDetail({productoList}) {
 
-    function onAdd(){
-        alert("Agregaste los Items al carrito")
-    }
+
     
     return (
 
