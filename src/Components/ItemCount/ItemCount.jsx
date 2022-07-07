@@ -3,7 +3,9 @@ import { Box, Button, ButtonGroup, IconButton, Text, useColorModeValue} from '@c
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Link } from "react-router-dom";
 
+
 const ItemCount = ({Stock, initial, onAdd}) => {
+const [mostratBotonera, SetMostratBotonera] = useState(true);
 
     let [auxStock, setauxStock] = useState(initial);
 
@@ -22,36 +24,47 @@ const ItemCount = ({Stock, initial, onAdd}) => {
         }
         // eslint-disable-next-line
     }, [auxStock])
-    
+    let agr = document.getElementById('agr')
 
     return (
         <>
-        <Box borderWidth='1px' 
+        <Box 
         overflow='hidden' 
         width='165px' 
         align='center' 
         margin='auto' 
-        borderRadius='lg'
+        
         bg={useColorModeValue('yellow.50', 'gray.800')}
         >
+
+        </Box>
+        <Box align='center'>
+        
+        
+        <Button id='agr' mt={3} mb={2} width='160px' onClick={()=>SetMostratBotonera(!mostratBotonera)+onAdd(auxStock)}  colorScheme='blue'>Agregar al Carrito</Button>
+        {mostratBotonera ? (
+            
         <ButtonGroup margin='auto' size='sm' isAttached variant='outline'>
             <IconButton onClick={()=>{lessItems()}} icon={<MinusIcon />} />
 
             <Text width="100px"
             py={1} 
-            color={useColorModeValue('gray.600', 'white')}>
+            >
                 {auxStock}
             </Text>
             <IconButton onClick={()=>{moreItems()}} icon={<AddIcon />} />
         </ButtonGroup>
-        </Box>
-        <Box align='center'>
-        <Text size='sm' mt={2}>Stock: {Stock} </Text>
-        
-        <Button mt={3} mb={2} width='160px' onClick={()=>onAdd(auxStock)} colorScheme='blue'>Agregar al Carrito</Button>
-        <Button as={Link} to="/cart" mt={3} mb={2} ml={2} width="160px" colorScheme="green">
+        ) : (  
+            agr.setAttribute('hidden', true),      
+            <Button as={Link} to="/cart" mt={3} mb={2} ml={2} width="160px" colorScheme="green" >
 					Finalizar compra
-				</Button>
+		    </Button>
+            )
+
+        }
+
+        
+        <Text size='sm' mt={2}>Stock: {Stock - auxStock} </Text>
         </Box>
         </>
     )

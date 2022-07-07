@@ -5,14 +5,11 @@ import {
   useColorModeValue,
   Stack,
   Image,
-  Tooltip,
   Badge,
   Flex,
-  IconButton,
   Text,
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import { FiShoppingCart } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 
 const data = {
@@ -120,14 +117,6 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
                 lineHeight="tight">
                   <Text color={'blue.500'} fontSize={'xl'} textTransform={'uppercase'}>{Modelo}</Text>
                 </Box>
-                <Tooltip
-                label="Añadir al carrito"
-                bg={useColorModeValue('gray.800', 'white')}
-                placement={'top'}
-                color={useColorModeValue('white', 'gray.800')}
-                fontSize={'1.2em'}>
-                  <IconButton onClick={onAdd} colorScheme='dark' variant='outline' size='lg' ml={5} icon={<FiShoppingCart/>}/>
-                </Tooltip>
               </Flex>
               <Flex justifyContent="space-between" alignContent="center">
                 <Rating rating={data.rating} numReviews={data.numReviews} />

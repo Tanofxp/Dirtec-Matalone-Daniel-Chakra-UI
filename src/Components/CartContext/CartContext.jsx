@@ -5,6 +5,7 @@ import {
     Heading,
     Center,
         } from '@chakra-ui/react'
+        
 
 export default function CartContext() {
   return (
@@ -13,7 +14,7 @@ export default function CartContext() {
     <Heading>Esto es el CartContext</Heading>
     </Center>
     <Center>
-    <Text>Aca tenemos que poner los items y la cantidades que has comprado cara pija !</Text>
+    <Text>Aca tenemos que poner los items y la cantidades que has comprado !</Text>
     </Center>
     </Box>
   )
