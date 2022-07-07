@@ -9,19 +9,17 @@ import Cart from './Components/Cart/Cart';
 function App() {
   
   return (
-  <> 
     <BrowserRouter>
-  <Box className="text-center menu">
-    <Box> <NavBar /></Box>
-    <Routes>
-          <Route path='/' element={<ItemListContainer />}/>
-          <Route path='/category/:id' element={<ItemListContainer/>}/>
-          <Route path='/item/:id' element={<ItemDetailContainer />}/>
-          <Route path="/cart" element={<Cart />}/>
-      </Routes>
-  </Box>
+      <Box className="text-center menu">
+        <Box> <NavBar /></Box>
+          <Routes>
+              <Route path='/' element={<ItemListContainer />}/>
+              <Route path='/category/:id' element={<ItemListContainer/>}/>
+              <Route path='/item/:id' element={<ItemDetailContainer />}/>
+              <Route path="/cart" element={<Cart />}/>
+          </Routes>
+        </Box>
     </BrowserRouter>
-  </>
   );
 }
 

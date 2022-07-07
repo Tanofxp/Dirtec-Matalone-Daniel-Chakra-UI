@@ -34,6 +34,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -66,8 +67,8 @@ export default function NavBar() {
         </Flex>
         
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
-        <Stack direction={'row'}  align={'center'}>
-          <a href='/'><Image src = {logo} h={{base: '30px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/></a>
+        <Stack as={RouterLink} to={"/"} direction={'row'}  align={'center'}>
+          <Image  src = {logo} h={{base: '30px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/>
         </Stack>
 
 

@@ -124,7 +124,7 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
                   <Box as="span" color={'gray.600'} fontSize="lg">
                     $
                   </Box>
-                  {precio}
+                  {precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}
                 </Box>
               </Flex>
             </Box>

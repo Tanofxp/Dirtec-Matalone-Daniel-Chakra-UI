@@ -1,14 +1,20 @@
 import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
 import { Box, Text, Image } from '@chakra-ui/react'
+import { useContext } from 'react'
+import { CartContext } from '../../Context/CartContext/CartContext'
 
-    function onAdd(added){
-        alert("Agregaste "+ added +" productos al carrito")
-    }
 
 export default function ItemDetail({productoList}) {
 
+    const { addItem } = useContext(CartContext);
 
+
+    function onAdd(added){
+        addItem({...productoList, cantidad: added, subTotal: productoList.precio*added})
+        alert("Agregaste "+ added +" productos al carrito")
+    }
+    
     
     return (
 
@@ -25,7 +31,7 @@ export default function ItemDetail({productoList}) {
             objectFit={'cover'}
             src={productoList.imgURL}
             />
-            Precio: ${productoList.precio}
+            Precio: ${productoList.precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}
         </Text>
         <Text mb={2}>
         Descripcion: {productoList.Descripcion}
