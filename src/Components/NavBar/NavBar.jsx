@@ -281,7 +281,7 @@ const NAV_ITEMS= [
     children: [
       {
         label: 'Lenovo',
-        href: '/',
+        href: '/category/Lenovo',
       },
       {
         label: 'HP',

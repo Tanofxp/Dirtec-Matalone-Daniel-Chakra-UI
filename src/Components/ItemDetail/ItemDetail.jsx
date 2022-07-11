@@ -31,7 +31,7 @@ export default function ItemDetail({productoList}) {
             objectFit={'cover'}
             src={productoList.imgURL}
             />
-            Precio: ${productoList.precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}
+            Precio: ${parseInt(productoList.precio).toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}
         </Text>
         <Text mb={2}>
         Descripcion: {productoList.Descripcion}
