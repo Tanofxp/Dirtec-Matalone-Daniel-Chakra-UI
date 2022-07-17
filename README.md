@@ -1,13 +1,41 @@
-# Getting Started with Create React App
+# Bienbenidos al Proyecto Dirtec
+    Dirtec es un pequeño ecomerce de venta de pc y insumos 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Autor
 
-## Available Scripts
+- [@tanofxp](https://github.com/Tanofxp/Dirtec-Matalone-Daniel-Chakra-UI)
 
-In the project directory, you can run:
+# Para instalar este proyecto
 
-### `npm start`
+    ejecutar npm install -y en la carpeta del mismo
 
+# Iniciar el Proyecto
+
+En el directorio del proyecto, puede ejecutar: npm start
+
+# Librerias que incluye 
+
+"@chakra-ui/icons": "^2.0.2",
+        "@chakra-ui/react": "^2.2.1",
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "@testing-library/jest-dom": "^5.16.4",
+        "@testing-library/react": "^13.3.0",
+        "@testing-library/user-event": "^13.5.0",
+        "core-js": "^3.23.3",
+        "firebase": "^9.9.0",
+        "framer-motion": "^6.3.15",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "react-icons": "^4.4.0",
+        "react-router-dom": "^6.3.0",
+        "react-scripts": "5.0.1",
+        "sweetalert2": "^11.4.23",
+        "web-vitals": "^2.1.4"
+
+La mayoria son de estilos como chakra y los icons y sweetalert2 para reemplazar las alertas emergentes  
+
+## ###############################################################################
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 

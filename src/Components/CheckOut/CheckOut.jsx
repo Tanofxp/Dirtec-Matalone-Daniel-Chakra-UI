@@ -52,8 +52,6 @@ export default function CheckOut() {
         })
         );
 
-        console.log(pedido)
-
         clear()
             }
 
