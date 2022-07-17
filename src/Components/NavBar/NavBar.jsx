@@ -1,6 +1,7 @@
 import logo from "../../logo.png";
 import CartWidget from "../CarWidget/CartWidget";
 import React from 'react';
+import Swal from 'sweetalert2'
 import {
   Box,
   Flex,
@@ -286,12 +287,22 @@ const NAV_ITEMS= [
       {
         label: 'HP',
         href: '#',
-        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
+        clickeado:()=>  Swal.fire({
+                                    title: 'Atencion',
+                                    text: 'Agregaremos mas productos Proximamente',
+                                    icon: 'info',
+                                    confirmButtonText: 'Aceptar'
+                                }),
       },
       {
         label: 'Asus',
         href: '#',
-        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
+        clickeado:()=> Swal.fire({
+          title: 'Atencion',
+          text: 'Agregaremos mas productos Proximamente',
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      }),
       },
     ],
   },
@@ -301,17 +312,32 @@ const NAV_ITEMS= [
       {
         label: 'Notebooks',
         href: '#',
-        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
+        clickeado:()=> Swal.fire({
+          title: 'Atencion',
+          text: 'Agregaremos mas productos Proximamente',
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      }),
       },
       {
         label: 'Tablets',
         href: '#',
-        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
+        clickeado:()=> Swal.fire({
+          title: 'Atencion',
+          text: 'Agregaremos mas productos Proximamente',
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      }),
       },
       {
         label: 'Smartphones',
         href: '#',
-        clickeado:()=> alert("Tendremos Mas Productos Proximamente"),
+        clickeado:()=> Swal.fire({
+                                    title: 'Atencion',
+                                    text: 'Agregaremos mas productos Proximamente',
+                                    icon: 'info',
+                                    confirmButtonText: 'Aceptar'
+                                }),
       },
     ],
   },

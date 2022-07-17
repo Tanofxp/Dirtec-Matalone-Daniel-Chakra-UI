@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Box, Button, ButtonGroup, IconButton, Text, useColorModeValue} from '@chakra-ui/react'
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Link } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 
 const ItemCount = ({Stock, initial, onAdd}) => {
 const [mostratBotonera, SetMostratBotonera] = useState(true);
@@ -20,7 +20,13 @@ const [mostratBotonera, SetMostratBotonera] = useState(true);
 
     useEffect(() => {
         if(auxStock===Stock){
-            alert("El Stock máximo es: " + Stock)
+            Swal.fire({
+                title: 'Cuidado',
+                text: '"El Stock máximo es: " + Stock',
+                icon: 'error',
+                confirmButtonText: 'Cerrar'
+            })
+            
         }
         // eslint-disable-next-line
     }, [auxStock])
@@ -57,7 +63,7 @@ const [mostratBotonera, SetMostratBotonera] = useState(true);
         ) : (  
             agr.setAttribute('hidden', true),      
             <Button as={Link} to="/cart" mt={3} mb={2} ml={2} width="160px" colorScheme="green" >
-					Finalizar compra
+					Ver Carrito
 		    </Button>
             )
 

@@ -1,18 +1,28 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 import ItemCount from '../ItemCount/ItemCount'
-import { Box, Text, Image } from '@chakra-ui/react'
+import { Box, Text, Image} from '@chakra-ui/react'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext/CartContext'
 
 
+
 export default function ItemDetail({productoList}) {
-
+    
     const { addItem } = useContext(CartContext);
-
+    
 
     function onAdd(added){
+        
+        Swal.fire({
+            title: 'Felicidades',
+            text: 'Has agregado '+added+ ' productos a tu carro',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+
         addItem({...productoList, cantidad: added, subTotal: productoList.precio*added})
-        alert("Agregaste "+ added +" productos al carrito")
+        
     }
     
     

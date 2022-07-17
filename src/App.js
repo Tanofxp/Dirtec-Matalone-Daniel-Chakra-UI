@@ -7,6 +7,7 @@ import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailCont
 import Cart from './Components/Cart/Cart';
 import TestConsulta from './Components/FireBase/TestConsulta';
 import TestConsultaColeccion from './Components/FireBase/TestConsultaColeccion';
+import CheckOut from './Components/CheckOut/CheckOut';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
               <Route path="/cart" element={<Cart />}/>
               <Route path="/consulta" element={<TestConsulta />}/>
               <Route path="/consultaColeccion" element={<TestConsultaColeccion />}/>
+              <Route path="/checkout" element={<CheckOut />}/>
           </Routes>
         </Box>
     </BrowserRouter>

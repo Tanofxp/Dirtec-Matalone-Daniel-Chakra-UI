@@ -78,6 +78,7 @@ export default function Cart() {
             
         </Center>
         <Center mt={5}>
+        <Button as={Link} to="/checkout" me={5} color={'green.500'} >Finalizar La compra</Button>
         <Button onClick={()=>{clear()}}>Vaciar Carrito</Button>
         </Center>
     </Box>))
