@@ -2,17 +2,11 @@ import {
     Box,
     Heading,
     Center,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
+    Text,
     Image,
     Button,
     Icon,
+    Stack,
         } from '@chakra-ui/react'
 import React from 'react'
 import { CartContext } from '../../Context/CartContext/CartContext'
@@ -43,39 +37,30 @@ export default function Cart() {
             
             </>
             ) : (
-    <Box alignContent='center' margin={'auto'} mt={5} h={'auto'} padding={5} w={1000} border={'solid'} rounded={'lg'} >
+    <Box alignContent='center' margin={5} mt={5} h={{base: 'auto', md: '50px', lg: 'auto'}}  padding={5} w={{base: 'auto', md: '50px', lg: 'auto'}} border={'solid'} rounded={'lg'} >
         <Center h='auto'>
-        <Heading mb={5}>Finalizaste Tu Compra </Heading>
+        <Heading mb={5} fontSize={{base: 'sm', md: 'sm', lg: '3xl'}}>Finalizaste Tu Compra </Heading>
         </Center>
-        <Center>
-        <TableContainer>
-            <Table variant='striped' colorScheme='teal'>
-                <TableCaption>Precio Total : {precioTotal().toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})} </TableCaption>
-                <Thead>
-                <Tr>
-                    <Th>Producto</Th>
-                    <Th>Modelo</Th>
-                    <Th>Cantidad</Th>
-                    <Th>Precio</Th>
-                </Tr>
-                </Thead>
-                <Tbody>
-                {cart.map((item)=> {
+        {cart.map((item)=> {
                     return(
-                    <Tr key={item.id}>
-                        <Td><Image rounded={'md'} alt={'product image'} src={item.imgURL} h={{ base: '80px', sm: '80px', lg: '80px' }} /></Td>
-                        <Td>{item.Modelo}</Td>
-                        <Td>{item.cantidad}</Td>
-                        <Td>${item.subTotal.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}</Td>
-                        <Td><Button onClick={()=>{removeItem(item.id)}} colorScheme="red"><Icon as={IoTrashOutline}/></Button></Td>
-                    </Tr>
+        <Center >
+                <Stack>
+                        <Box border={'solid'} rounded={'lg'} m={5} p={3} key={item.id} h={{ base: '220px', sm: '80px', lg: '400px' }} w={{ base: '300px', sm: '80px', lg: '400px' }}>
+                            
+                            <Image m={'auto'} rounded={'md'} alt={'product image'} src={item.imgURL} h={{ base: '50px', sm: '80px', lg: '200px' }} w={{ base: '50px', sm: '80px', lg: '250px' }}/>
+                            <Text>Modelo: {item.Modelo}</Text>
+                            <Text>Cantidad: {item.cantidad}</Text>
+                            <Text mb={2}>Precio ${item.subTotal.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}</Text>
+                            <Button  onClick={()=>{removeItem(item.id)}} colorScheme="red"><Icon as={IoTrashOutline}/></Button>
+                            
+                        </Box>
+                </Stack>
+        </Center>
                     )
                     })
                 }
-                </Tbody>
-            </Table>
-            </TableContainer>
-            
+        <Center>
+        <Text>Precio Total : {precioTotal().toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}</Text>
         </Center>
         <Center mt={5}>
         <Button as={Link} to="/checkout" me={5} color={'green.500'} >Finalizar La compra</Button>

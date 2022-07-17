@@ -65,7 +65,7 @@ export default function CheckOut() {
   return (
     <Center mt={10}>
     <Box>
-        <Heading>Complete para terminar su compra</Heading>
+        <Heading fontSize={{base: 'sm', md: 'sm', lg: '3xl'}}>Complete los Campos para terminar su compra</Heading>
         <br></br>
         <Input id='nombre' onChange={(e) => setNombre(e.target.value)} type={'text'} placeholder={'Ingrese su Nombre '} ></Input>
         <br></br>

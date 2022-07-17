@@ -69,7 +69,7 @@ export default function NavBar() {
         
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} alignItems={'center'}>
         <Stack as={RouterLink} to={"/"} direction={'row'}  align={'center'}>
-          <Image  src = {logo} h={{base: '30px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/>
+          <Image  src = {logo} h={{base: '25px', md: '50px', lg: '70px'}} alt='Steering-Wheel'/>
         </Stack>
 
 

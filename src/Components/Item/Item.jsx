@@ -56,31 +56,35 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
   
   return (
 
-        <Center py={10}>
+        <Center py={3}>
           <Box
             as={RouterLink} 
             to={"/item/" + id}
             role={'group'}
-            py={10}
-            maxW={'330px'}
-            w={'full'}
+            py={5}
+            maxW={'300px'}
+            h={{base: '200px', md: '50px', lg: 'auto'}}
+            w={{base: '250px', md: '50px', lg: 'full'}}
             bg={useColorModeValue('yellow.300', 'gray.800')}
             boxShadow={'2xl'}
             rounded={'lg'}
             pos={'relative'}
-            zIndex={0}>
+            zIndex={0}
+            mt={3}
+            >
+            
             <Box
               rounded={'lg'}
               mt={-12}
               pos={'relative'}
-              height={'230px'}
+              height={{base: '50px', md: '50px', lg: '230px'}}
               _after={{
                 transition: 'all .3s ease',
                 content: '""',
-                w: 'full',
-                h: 'full',
+                w: {base: '150px', md: '50px', lg: 'full'},
+                h: {base: '150px', md: '50px', lg: 'full'},
                 pos: 'absolute',
-                top: 5,
+                top: 2,
                 left: 0,
                 backgroundImage: `url(${imgURL})`,
                 filter: 'blur(15px)',
@@ -94,8 +98,8 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
               <Image
                 m={'auto'}
                 rounded={'lg'}
-                height={250}
-                width={300}
+                height={{base: '100px', md: '50px', lg: '250px'}}
+                width={{base: '100px', md: '50px', lg: '300px'}}
                 objectFit={'cover'}
                 src={imgURL}
               />
@@ -111,17 +115,17 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
               </Box>
               <Flex mt="1" justifyContent="space-between" alignContent="center">
                 <Box
-                fontSize="2xl"
+                fontSize={{base: 'sm', md: 'sm', lg: '3xl'}}
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight">
-                  <Text color={'blue.500'} fontSize={'xl'} textTransform={'uppercase'}>{Modelo}</Text>
+                  <Text color={'blue.500'} fontSize={{base: 'sm', md: 'sm', lg: '3xl'}} textTransform={'uppercase'}>{Modelo}</Text>
                 </Box>
               </Flex>
               <Flex justifyContent="space-between" alignContent="center">
                 <Rating rating={data.rating} numReviews={data.numReviews} />
-                <Box mt={2} fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-                  <Box as="span" color={'gray.600'} fontSize="lg">
+                <Box mt={2} fontSize={{base: 'sm', md: 'sm', lg: '3xl'}} color={useColorModeValue('gray.800', 'white')}>
+                  <Box as="span" color={'gray.600'} fontSize={{base: 'sm', md: 'sm', lg: '3xl'}}>
                     $
                   </Box>
                   {precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})}

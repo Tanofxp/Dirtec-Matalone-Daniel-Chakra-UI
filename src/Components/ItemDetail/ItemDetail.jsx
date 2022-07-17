@@ -1,7 +1,7 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 import ItemCount from '../ItemCount/ItemCount'
-import { Box, Text, Image} from '@chakra-ui/react'
+import { Box, Text, Image, Center} from '@chakra-ui/react'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext/CartContext'
 
@@ -27,17 +27,17 @@ export default function ItemDetail({productoList}) {
     
     
     return (
-
-        <Box alignContent="center" margin={'auto'} mt={5} h={'auto'} padding={5} w={700} border={'solid'} rounded={'lg'}>
-        <Text fontSize='3xl' fontWeight='bold' mb='1rem'>
+        <Center>
+        <Box alignContent="center" margin={'5px'} mt={3} h={{base: 'auto', md: '50px', lg: 'auto'}} padding={5} w={{base: 'auto', md: '50px', lg: '700px'}} border={'solid'} rounded={'lg'}>
+        <Text fontSize={{base: 'sm', md: 'sm', lg: '3xl'}} fontWeight='bold' mb='1rem'>
             Modelo: {productoList.Modelo}
             <br></br>
             ID del producto: {productoList.id}
             <Image
             m={'auto'}
             rounded={'lg'}
-            height={250}
-            width={300}
+            height={{base: '140px', md: '50px', lg: '250px'}}
+            width={{base: '140px', md: '50px', lg: '300px'}}
             objectFit={'cover'}
             src={productoList.imgURL}
             />
@@ -46,10 +46,11 @@ export default function ItemDetail({productoList}) {
         <Text mb={2}>
         Descripcion: {productoList.Descripcion}
         </Text>
-        <Box borderWidth='2px' borderRadius='lg' width='200px' p={3} m='auto' borderColor='gray.500'>
+        <Box borderWidth='2px' borderRadius='lg' width={{base: '200px', md: '50px', lg: '200px'}} p={3} m='auto' borderColor='gray.500'>
             <ItemCount Stock={20} initial={1} onAdd={onAdd}/>
         </Box>
         </Box>
+        </Center>
         
         )
 }
