@@ -306,39 +306,4 @@ const NAV_ITEMS= [
       },
     ],
   },
-  {
-    label: 'Categoria',
-    children: [
-      {
-        label: 'Notebooks',
-        href: '#',
-        clickeado:()=> Swal.fire({
-          title: 'Atencion',
-          text: 'Agregaremos mas productos Proximamente',
-          icon: 'info',
-          confirmButtonText: 'Aceptar'
-      }),
-      },
-      {
-        label: 'Tablets',
-        href: '#',
-        clickeado:()=> Swal.fire({
-          title: 'Atencion',
-          text: 'Agregaremos mas productos Proximamente',
-          icon: 'info',
-          confirmButtonText: 'Aceptar'
-      }),
-      },
-      {
-        label: 'Smartphones',
-        href: '#',
-        clickeado:()=> Swal.fire({
-                                    title: 'Atencion',
-                                    text: 'Agregaremos mas productos Proximamente',
-                                    icon: 'info',
-                                    confirmButtonText: 'Aceptar'
-                                }),
-      },
-    ],
-  },
 ];

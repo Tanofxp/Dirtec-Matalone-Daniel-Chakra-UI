@@ -81,10 +81,10 @@ export default function Item({ Modelo, Marca, precio, imgURL, onAdd , id , Descr
               _after={{
                 transition: 'all .3s ease',
                 content: '""',
-                w: {base: '150px', md: '50px', lg: 'full'},
-                h: {base: '150px', md: '50px', lg: 'full'},
+                w: {base: '160px', md: '50px', lg: 'full'},
+                h: {base: '100px', md: '50px', lg: 'full'},
                 pos: 'absolute',
-                top: 2,
+                top: 1,
                 left: 0,
                 backgroundImage: `url(${imgURL})`,
                 filter: 'blur(15px)',
