@@ -43,6 +43,8 @@ export default function NavBar() {
   return (
       <Box>
 
+
+
       <Flex
         bg={useColorModeValue('#FFF159', 'blue.800')}
         color={useColorModeValue('gray.600', 'white')}
@@ -143,7 +145,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? '#'}
+                
                 fontSize={'m'}
                 fontWeight={500}
                 color={linkColor}
@@ -177,10 +179,11 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel, clickeado }) => {
+const DesktopSubNav = ({ label, subLabel, clickeado }) => {
   return (
     <Link
-      href={href}
+      as={RouterLink} 
+      to={"/category/" + label}
       onClick={clickeado}
       role={'group'}
       display={'row'}
@@ -225,7 +228,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href, clickeado}) => {
+const MobileNavItem = ({ label, children, clickeado}) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -233,7 +236,7 @@ const MobileNavItem = ({ label, children, href, clickeado}) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -265,7 +268,7 @@ const MobileNavItem = ({ label, children, href, clickeado}) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href} onClick={child.clickeado}>
+              <Link as={RouterLink} to={"/category/" + label} key={child.label} py={2} onClick={child.clickeado}>
                 {child.label}
               </Link>
             ))}
@@ -282,11 +285,9 @@ const NAV_ITEMS= [
     children: [
       {
         label: 'Lenovo',
-        href: '/category/Lenovo',
       },
       {
         label: 'HP',
-        href: '#',
         clickeado:()=>  Swal.fire({
                                     title: 'Atencion',
                                     text: 'Agregaremos mas productos Proximamente',
@@ -296,7 +297,6 @@ const NAV_ITEMS= [
       },
       {
         label: 'Asus',
-        href: '#',
         clickeado:()=> Swal.fire({
           title: 'Atencion',
           text: 'Agregaremos mas productos Proximamente',
