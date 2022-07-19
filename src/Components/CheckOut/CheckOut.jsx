@@ -2,35 +2,39 @@ import React, { useContext, useState } from 'react'
 import { Box, Button, Center, Heading, Input,} from '@chakra-ui/react'
 import { CartContext } from '../../Context/CartContext/CartContext'
 import { addDoc, collection, getFirestore} from "firebase/firestore"
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 export default function CheckOut() {
+
     const { cart,  precioTotal, clear } = useContext(CartContext);
     const [nombre, setNombre] = useState('')
     const [tel, setTel] = useState('')
     const [email, setEmail] = useState('')
-
-    function handleClickComprar(){
+    let navigate = useNavigate()
+    
+    async function handleClickComprar(){
+        let auxCarrito = cart.map((item)=>{
+            let aux = {
+                Id: item.id,
+                Modelo: item.Modelo,
+                cantidad: item.cantidad,
+                precio: item.precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})
+            }
+        return {...aux}
+        })
+        
         const fecha = new Date();
-        let pedido = {}
-        cart.map((item)=>(
-            pedido = {
+        let pedido = {
             ticket:{
                 nombre: nombre,
                 telefono: tel,
                 email: email
             },
-            carrito:{
-                Id: item.id,
-                Modelo: item.Modelo,
-                cantidad: item.cantidad,
-                precio: item.precio.toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2})
-            },
+            carrito: auxCarrito,
             total: precioTotal().toLocaleString({style: 'currency',currency: 'ARS', minimumFractionDigits: 2}),
             date: fecha,
             }        
-            
-        ))
             if(nombre === '' || email === '' || tel === ''|| cart.length === 0){
                 Swal.fire({
                     title: 'Cuidado',
@@ -43,7 +47,7 @@ export default function CheckOut() {
         const db = getFirestore();
         const CollectionRef = collection(db,'Ventas');
 
-        addDoc(CollectionRef, pedido).then(({id})=>
+        await addDoc(CollectionRef, pedido).then(({id})=>
         Swal.fire({
             title: 'Felicitaciones',
             text: 'Su numero de compra es '+id+' Muchas gracias por su compra',
@@ -53,6 +57,7 @@ export default function CheckOut() {
         );
 
         clear()
+        return navigate("/")
             }
 
     }

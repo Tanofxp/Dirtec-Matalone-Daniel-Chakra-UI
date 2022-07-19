@@ -1,7 +1,6 @@
 import logo from "../../logo.png";
 import CartWidget from "../CarWidget/CartWidget";
 import React from 'react';
-import Swal from 'sweetalert2'
 import {
   Box,
   Flex,
@@ -179,12 +178,11 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, subLabel, clickeado }) => {
+const DesktopSubNav = ({ label, subLabel}) => {
   return (
     <Link
       as={RouterLink} 
       to={"/category/" + label}
-      onClick={clickeado}
       role={'group'}
       display={'row'}
       p={2}
@@ -228,7 +226,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, clickeado}) => {
+const MobileNavItem = ({ label, children}) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -268,7 +266,7 @@ const MobileNavItem = ({ label, children, clickeado}) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link as={RouterLink} to={"/category/" + label} key={child.label} py={2} onClick={child.clickeado}>
+              <Link as={RouterLink} to={"/category/" + label} key={child.label} py={2}>
                 {child.label}
               </Link>
             ))}
@@ -288,21 +286,9 @@ const NAV_ITEMS= [
       },
       {
         label: 'HP',
-        clickeado:()=>  Swal.fire({
-                                    title: 'Atencion',
-                                    text: 'Agregaremos mas productos Proximamente',
-                                    icon: 'info',
-                                    confirmButtonText: 'Aceptar'
-                                }),
       },
       {
         label: 'Asus',
-        clickeado:()=> Swal.fire({
-          title: 'Atencion',
-          text: 'Agregaremos mas productos Proximamente',
-          icon: 'info',
-          confirmButtonText: 'Aceptar'
-      }),
       },
     ],
   },

@@ -61,12 +61,16 @@ const [mostratBotonera, SetMostratBotonera] = useState(true);
             <IconButton onClick={()=>{moreItems()}} icon={<AddIcon />} />
         </ButtonGroup>
         ) : (  
-            agr.setAttribute('hidden', true),      
+            agr.setAttribute('hidden', true), 
+            <Box>    
             <Button as={Link} to="/cart" mt={3} mb={2} ml={2} width="160px" colorScheme="green" >
 					Ver Carrito
 		    </Button>
-            )
-
+            <Button as={Link} to="/" mt={3} mb={2} ml={2} width="160px" colorScheme="blue">
+                    Seguir Comprando
+            </Button>
+            </Box> 
+            ) 
         }
 
         

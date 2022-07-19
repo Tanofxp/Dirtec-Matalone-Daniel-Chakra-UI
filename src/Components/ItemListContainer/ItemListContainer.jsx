@@ -7,32 +7,37 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 export default function ItemListContainer() {
   const [loading, setLoading] = useState(true);
   const [productoList, setProductoList] = useState([])
+  const [catalogo, setCatalogo] = useState([])
   let { Marca } = useParams();
   
   useEffect(() => {
+    async function getItems(){
     const db = getFirestore();
 
     const CollectionRef = collection(db, "productos");
 
-    getDocs(CollectionRef).then((snapshot) => {
+    await getDocs(CollectionRef).then((snapshot) => {
       const auxArray = snapshot.docs.map((item) => ({
         ...item.data(),
         id: item.id,
       }));
-      setProductoList(auxArray)
+      setCatalogo(auxArray)
     });
+    }
     
-    let arrayFiltradoMarca = productoList.filter((item) => item.Marca === Marca);
+    getItems()
+    let arrayFiltradoMarca = catalogo.filter((item) => item.Marca === Marca);
 
     if(Marca !== undefined){
         setProductoList(arrayFiltradoMarca)
         setLoading(false)
     }else{
+      setProductoList(catalogo)
       setLoading(false)
     }
+  
 
-
-  }, [Marca])
+  }, [Marca, catalogo])
 
   return loading ? (
 		<Center mt={12}>
