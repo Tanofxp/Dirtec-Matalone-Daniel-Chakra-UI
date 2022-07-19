@@ -36,8 +36,9 @@ export default function ItemListContainer() {
       setLoading(false)
     }
   
-
-  }, [Marca, catalogo])
+    console.log(catalogo)
+    console.log(productoList)
+  }, [Marca])
 
   return loading ? (
 		<Center mt={12}>
