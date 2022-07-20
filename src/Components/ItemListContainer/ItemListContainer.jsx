@@ -7,37 +7,28 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 export default function ItemListContainer() {
   const [loading, setLoading] = useState(true);
   const [productoList, setProductoList] = useState([])
-  const [catalogo, setCatalogo] = useState([])
   let { Marca } = useParams();
   
   useEffect(() => {
-    async function getItems(){
+    
     const db = getFirestore();
-
     const CollectionRef = collection(db, "productos");
 
-    await getDocs(CollectionRef).then((snapshot) => {
-      const auxArray = snapshot.docs.map((item) => ({
-        ...item.data(),
-        id: item.id,
-      }));
-      setCatalogo(auxArray)
-    });
-    }
-    
-    getItems()
-    let arrayFiltradoMarca = catalogo.filter((item) => item.Marca === Marca);
+    if (Marca){    
 
-    if(Marca !== undefined){
-        setProductoList(arrayFiltradoMarca)
-        setLoading(false)
+      getDocs(CollectionRef).then((prod) => {         
+        const auxList = prod.docs.map(item => ({...item.data(), id: item.id}));
+        setProductoList(auxList.filter((el) => el.Marca === Marca))
+				setLoading(false)
+      })
     }else{
-      setProductoList(catalogo)
-      setLoading(false)
-    }
+			getDocs(CollectionRef).then((el) => {         
+        const auxList = el.docs.map(item => ({...item.data(), id: item.id})); 
+        setProductoList(auxList)
+				setLoading(false)
+			})
+		}
   
-    console.log(catalogo)
-    console.log(productoList)
   }, [Marca])
 
   return loading ? (
