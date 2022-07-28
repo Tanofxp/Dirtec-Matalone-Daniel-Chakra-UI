@@ -1,5 +1,5 @@
-# Bienbenidos al Proyecto Dirtec
-    Dirtec es un pequeño ecomerce de venta de pc y insumos 
+# Bienvenidos al Proyecto Dirtec
+    Dirtec es un pequeño ecommerce de venta de pc y insumos 
 
 ## Autor
 
